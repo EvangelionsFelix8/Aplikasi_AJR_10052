@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="15dp"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
+    android:layout_marginBottom="5dp">
+
+    <com.google.android.material.card.MaterialCardView
+        app:cardCornerRadius="15dp"
+        android:id="@+id/carditem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/fotoMobil"
+                    android:layout_width="match_parent"
+                    android:layout_height="175dp"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/ic_launcher_background" />
+
+                <TextView
+                    android:id="@+id/textNamaMobil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@id/fotoMobil"
+                    android:layout_alignBottom="@id/fotoMobil"
+                    android:layout_marginBottom="25dp"
+                    android:background="@color/blackOpacity"
+                    android:hint="@string/nama_mobil"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    android:textColor="@color/white" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:background="@color/yellowTheme"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/textHargaSewa"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="fill_vertical"
+                            android:hint="@string/harga_sewa"
+                            android:textAppearance="?attr/textAppearanceHeadline6" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_alignParentEnd="true">
+
+                            <ImageView
+                                android:layout_marginTop="2dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_baseline_person_24" />
+
+                            <TextView
+                                android:id="@+id/textKapasitas"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?attr/textAppearanceHeadline6" />
+                        </LinearLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="5dp"
+                        android:padding="5dp"
+                        app:cardCornerRadius="5dp"
+                        android:elevation="0dp"
+                        android:backgroundTint="@color/biruTheme">
+
+                        <TextView
+                            android:gravity="center_horizontal"
+                            android:textAppearance="?attr/textAppearanceSubtitle1"
+                            android:id="@+id/textTipeMobil"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textColor="@color/white"
+                            android:textStyle="bold" />
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="5dp"
+                        android:padding="5dp"
+                        app:cardCornerRadius="5dp"
+                        android:elevation="0dp"
+                        android:backgroundTint="@color/biruTheme">
+
+                        <TextView
+                            android:gravity="center_horizontal"
+                            android:textAppearance="?attr/textAppearanceSubtitle1"
+                            android:id="@+id/textBahanBakar"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:layout_gravity="center"
+                            android:textStyle="bold" />
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="5dp"
+                        android:padding="5dp"
+                        app:cardCornerRadius="5dp"
+                        android:elevation="0dp"
+                        android:backgroundTint="@color/biruTheme">
+
+                        <TextView
+                            android:gravity="center_horizontal"
+                            android:textAppearance="?attr/textAppearanceSubtitle1"
+                            android:id="@+id/textJenisTransmisi"
+                            android:layout_width="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:textStyle="bold" />
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:textAppearance="?attr/textAppearanceSubtitle1"
+                        android:id="@+id/textFasilitas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginStart="5dp"
+                        android:hint="@string/fasilitas_mobil" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</RelativeLayout>
