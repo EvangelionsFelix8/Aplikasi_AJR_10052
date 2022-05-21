@@ -19,21 +19,23 @@
         <entry key="..\:/KULIAH/Semester 6/P3L/Aplikasi AJR (Android Studio)/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/KULIAH/Semester 6/P3L/Aplikasi AJR (Android Studio)/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/KULIAH/Semester 6/P3L/Aplikasi AJR (Android Studio)/app/src/main/res/layout/activity_manager.xml" value="0.22" />
+        <entry key="..\:/KULIAH/Semester 6/P3L/Aplikasi AJR (Android Studio)/app/src/main/res/layout/activity_manager_main.xml" value="0.22" />
         <entry key="..\:/KULIAH/Semester 6/P3L/Aplikasi AJR (Android Studio)/app/src/main/res/layout/activity_splash_screen.xml" value="0.22" />
         <entry key="..\:/KULIAH/Semester 6/P3L/Aplikasi AJR (Android Studio)/app/src/main/res/layout/fragment_date_picker.xml" value="0.17552083333333332" />
-        <entry key="..\:/KULIAH/Semester 6/P3L/Aplikasi AJR (Android Studio)/app/src/main/res/layout/fragment_driver_home.xml" value="0.1796875" />
+        <entry key="..\:/KULIAH/Semester 6/P3L/Aplikasi AJR (Android Studio)/app/src/main/res/layout/fragment_driver_home.xml" value="0.22" />
         <entry key="..\:/KULIAH/Semester 6/P3L/Aplikasi AJR (Android Studio)/app/src/main/res/layout/fragment_driver_profile.xml" value="0.22" />
         <entry key="..\:/KULIAH/Semester 6/P3L/Aplikasi AJR (Android Studio)/app/src/main/res/layout/fragment_home.xml" value="0.22" />
         <entry key="..\:/KULIAH/Semester 6/P3L/Aplikasi AJR (Android Studio)/app/src/main/res/layout/fragment_mobil.xml" value="0.1796875" />
         <entry key="..\:/KULIAH/Semester 6/P3L/Aplikasi AJR (Android Studio)/app/src/main/res/layout/fragment_profile.xml" value="0.22" />
         <entry key="..\:/KULIAH/Semester 6/P3L/Aplikasi AJR (Android Studio)/app/src/main/res/layout/fragment_promo.xml" value="0.22" />
         <entry key="..\:/KULIAH/Semester 6/P3L/Aplikasi AJR (Android Studio)/app/src/main/res/layout/fragment_promo_fragment.xml" value="0.17481884057971014" />
-        <entry key="..\:/KULIAH/Semester 6/P3L/Aplikasi AJR (Android Studio)/app/src/main/res/layout/fragment_riwayat.xml" value="0.15534420289855072" />
+        <entry key="..\:/KULIAH/Semester 6/P3L/Aplikasi AJR (Android Studio)/app/src/main/res/layout/fragment_riwayat.xml" value="0.22" />
         <entry key="..\:/KULIAH/Semester 6/P3L/Aplikasi AJR (Android Studio)/app/src/main/res/layout/layout_loading.xml" value="0.1539855072463768" />
         <entry key="..\:/KULIAH/Semester 6/P3L/Aplikasi AJR (Android Studio)/app/src/main/res/layout/mobil_item.xml" value="0.22" />
         <entry key="..\:/KULIAH/Semester 6/P3L/Aplikasi AJR (Android Studio)/app/src/main/res/layout/nav_header.xml" value="0.1743659420289855" />
         <entry key="..\:/KULIAH/Semester 6/P3L/Aplikasi AJR (Android Studio)/app/src/main/res/layout/promo_item.xml" value="0.22" />
         <entry key="..\:/KULIAH/Semester 6/P3L/Aplikasi AJR (Android Studio)/app/src/main/res/layout/promo_list.xml" value="0.22" />
+        <entry key="..\:/KULIAH/Semester 6/P3L/Aplikasi AJR (Android Studio)/app/src/main/res/layout/riwayat_item.xml" value="0.22" />
         <entry key="..\:/KULIAH/Semester 6/P3L/Aplikasi AJR (Android Studio)/app/src/main/res/layout/show_promo_screen.xml" value="0.17753623188405798" />
         <entry key="..\:/KULIAH/Semester 6/P3L/Aplikasi AJR (Android Studio)/app/src/main/res/menu/bottom_nav.xml" value="0.22" />
         <entry key="..\:/KULIAH/Semester 6/P3L/Aplikasi AJR (Android Studio)/app/src/main/res/menu/drawer_menu.xml" value="0.22" />

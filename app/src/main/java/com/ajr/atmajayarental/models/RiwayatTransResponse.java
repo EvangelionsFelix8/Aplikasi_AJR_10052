@@ -4,11 +4,11 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class MobilResponse {
+public class RiwayatTransResponse {
     private String message;
 
     @SerializedName("data")
-    private List<Mobil> mobilList;
+    private List<RiwayatTrans> riwayatTransList;
 
     public String getMessage() {
         return message;
@@ -18,11 +18,11 @@ public class MobilResponse {
         this.message = message;
     }
 
-    public List<Mobil> getMobilList() {
-        return mobilList;
+    public List<RiwayatTrans> getPromoList() {
+        return riwayatTransList;
     }
 
-    public void setMobilList(List<Mobil> mobilList) {
-        this.mobilList = mobilList;
+    public void setPromoList(List<RiwayatTrans> riwayatTransList) {
+        this.riwayatTransList = riwayatTransList;
     }
 }

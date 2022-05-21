@@ -18,6 +18,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ajr.atmajayarental.preferences.CustomerPreferences;
+import com.ajr.atmajayarental.preferences.DriverPreferences;
+import com.ajr.atmajayarental.preferences.PegawaiPreferences;
 import com.ajr.atmajayarental.screen.HomeFragment;
 import com.ajr.atmajayarental.screen.LoginActivity;
 import com.ajr.atmajayarental.screen.MobilFragment;
@@ -37,12 +40,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout drawer;
     Toolbar toolbar;
     TextView toolbarTitle;
+    private CustomerPreferences customerPreferences;
+    private PegawaiPreferences pegawaiPreferences;
+    private DriverPreferences driverPreferences;
 
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        customerPreferences = new CustomerPreferences(getApplicationContext());
 
         toolbar = findViewById(R.id.toolbar);
         toolbarTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
@@ -86,10 +94,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 toolbarTitle.setText("Riwayat Transaksi Anda");
                 break;
             case R.id.nav_logout:
+                customerPreferences.logout();
                 Toast.makeText(MainActivity.this, "Berhasil Logout", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(i);
-                finish();
+                checkLogin();
+//                Intent i = new Intent(MainActivity.this, LoginActivity.class);
+//                startActivity(i);
+//                finish();
                 break;
         }
         drawer.closeDrawer(GravityCompat.START);
@@ -138,13 +148,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    //    @Override
-//    public void onBackPressed() {
-//        if(drawer.isDrawerOpen(GravityCompat.START)){
-//            drawer.closeDrawer(GravityCompat.START);
-//        }
-//        else{
-//            super.onBackPressed();
-//        }
-//    }
+    private void checkLogin() {
+//        Fungsi ini akan mengecek jika user login,
+//        akan memunculkan toast jika tidak redirect ke login activity
+        if (!customerPreferences.checkLogin()) {
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            finish();
+        }
+        else {
+            Toast.makeText(MainActivity.this.getApplicationContext(), "Login !!", Toast.LENGTH_SHORT).show();
+        }
+    }
 }

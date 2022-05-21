@@ -36,7 +36,7 @@
     <string name="selamat_datang">Selamat Datang,</string>
     <string name="nama_saya" tools:ignore="ExtraTranslation">Nama Saya</string>
     <string name="ini_belum_tahu_isinya_apa">Ini Belum Tahu isinya Apa</string>
-    <string name="nama_customer">Nama Customer</string>
+    <string name="nama_customer">Nama Anda</string>
     <string name="alamat">Alamat</string>
     <string name="ini_alamat_customer">ini alamat Customer</string>
     <string name="jenis_kelamin">Jenis Kelamin</string>
@@ -67,4 +67,10 @@
     <string name="nama_driver">Nama Driver</string>
     <string name="nomor_telepon">Nomor Telepon</string>
     <string name="ini_nomor_telepon_driver">Ini Nomor Telepon Driver</string>
+    <string name="ini_nomor_telepon_customer">Ini Nomor Telepon Customer</string>
+    <string name="id_transaksi">ID_TRANSAKSI</string>
+    <string name="tanggal_transaksi">Tanggal Transaksi</string>
+    <string name="status_transaksi">Status Transaksi</string>
+    <string name="panah"><![CDATA[<-->]]></string>
+    <string name="rp_total_harga">Rp Total Harga</string>
 </resources>

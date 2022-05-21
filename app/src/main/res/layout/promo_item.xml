@@ -37,8 +37,8 @@
                             android:id="@+id/textJenis"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:hint="@string/jenis_promo"
                             android:gravity="fill_vertical"
+                            android:hint="@string/jenis_promo"
                             android:textAppearance="?attr/textAppearanceHeadline6" />
 
                         <TextView

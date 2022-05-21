@@ -109,38 +109,10 @@ public class PromoFragment extends Fragment {
 
         listPromo = new ArrayList<>();
         adapter = new PromoAdapter(getContext(),listPromo);
-
-//        int orientation = getResources().getConfiguration().orientation;
-//        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-//            layoutManager = new GridLayoutManager(getContext(), 1);
-//            rvPromo.setLayoutManager(layoutManager);
-//            Log.i("info", "ini potrait");
-//        }
-//        else {
-//            Log.i("info", "ini p lands");
-//            layoutManager = new GridLayoutManager(getContext(), 2);
-//            rvPromo.setLayoutManager(layoutManager);
-//        }
         rvPromo.setAdapter(adapter);
 
         getActivePromo();
         return view;
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-            layoutManager = new GridLayoutManager(getContext(), 1);
-            rvPromo.setLayoutManager(layoutManager);
-            Log.i("info", "ini potrait");
-        }
-        else {
-            Log.i("info", "ini p lands");
-            layoutManager = new GridLayoutManager(getContext(), 2);
-            rvPromo.setLayoutManager(layoutManager);
-        }
     }
 
     public void getActivePromo(){
