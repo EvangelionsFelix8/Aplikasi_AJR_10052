@@ -18,7 +18,7 @@ public class RiwayatTransResponse {
         this.message = message;
     }
 
-    public List<RiwayatTrans> getPromoList() {
+    public List<RiwayatTrans> getRiwayatTransList() {
         return riwayatTransList;
     }
 

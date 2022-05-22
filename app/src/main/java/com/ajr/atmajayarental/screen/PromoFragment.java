@@ -105,7 +105,7 @@ public class PromoFragment extends Fragment {
 //        user = userPreferences.getUserLogin();
 //        rvPromo.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.placeholder));
 
-//        rvPromo.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvPromo.setLayoutManager(new LinearLayoutManager(getContext()));
 
         listPromo = new ArrayList<>();
         adapter = new PromoAdapter(getContext(),listPromo);
@@ -124,7 +124,7 @@ public class PromoFragment extends Fragment {
                 Gson gson = new Gson();
                 PromoResponse promoResponse = gson.fromJson(response, PromoResponse.class);
                 adapter.setPromoList(promoResponse.getPromoList());
-//                rvPromo.setAdapter(adapter);
+                rvPromo.setAdapter(adapter);
                 adapter.getFilter().filter(svPromo.getQuery());
                 Toast.makeText(getContext(), promoResponse.getMessage(), Toast.LENGTH_SHORT).show();
                 setLoading(false);

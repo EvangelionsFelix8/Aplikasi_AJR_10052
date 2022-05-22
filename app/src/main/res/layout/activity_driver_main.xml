@@ -21,6 +21,13 @@
             android:layout_gravity="center"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" >
 
+            <ImageButton
+                android:id="@+id/btnLogout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/transparant"
+                android:src="@drawable/ic_baseline_exit_to_app_24"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -49,5 +56,4 @@
             app:menu="@menu/bottom_nav"
             android:layout_marginTop="-55dp"/>
     </LinearLayout>
-
 </RelativeLayout>

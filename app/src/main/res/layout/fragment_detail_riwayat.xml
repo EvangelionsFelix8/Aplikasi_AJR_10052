@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".screen.DetailRiwayatFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/biruTheme"
+            android:elevation="0dp"
+            android:layout_gravity="center"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="20sp"
+                android:fontFamily="@font/secular"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:text="Detail Transaksi Anda"/>
+        </androidx.appcompat.widget.Toolbar>
+    </RelativeLayout>
+
+</ScrollView>

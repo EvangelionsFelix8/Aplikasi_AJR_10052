@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,11 +22,14 @@ import com.ajr.atmajayarental.VolleySingleton;
 import com.ajr.atmajayarental.adapters.MobilAdapter;
 import com.ajr.atmajayarental.adapters.PromoAdapter;
 import com.ajr.atmajayarental.adapters.RiwayatAdapter;
+import com.ajr.atmajayarental.api.CustomerApi;
 import com.ajr.atmajayarental.api.MobilApi;
+import com.ajr.atmajayarental.models.Customer;
 import com.ajr.atmajayarental.models.MobilResponse;
 import com.ajr.atmajayarental.models.Promo;
 import com.ajr.atmajayarental.models.RiwayatTrans;
 import com.ajr.atmajayarental.models.RiwayatTransResponse;
+import com.ajr.atmajayarental.preferences.CustomerPreferences;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -54,6 +58,8 @@ public class RiwayatFragment extends Fragment {
     public RequestQueue queue;
     RecyclerView.LayoutManager layoutManager;
     Configuration newConfig;
+    private CustomerPreferences customerPreferences;
+    private Customer customer;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -63,6 +69,9 @@ public class RiwayatFragment extends Fragment {
         layoutLoading = view.findViewById(R.id.linearLoading);
         svRiwayat = view.findViewById(R.id.searchRiwayat);
         srRiwayat = view.findViewById(R.id.srRiwayat);
+
+        customerPreferences = new CustomerPreferences(getContext());
+        customer = customerPreferences.getCustomerLogin();
 
         svRiwayat.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -96,16 +105,18 @@ public class RiwayatFragment extends Fragment {
     public void getRiwayatList(){
         setLoading(true);
         srRiwayat.setRefreshing(true);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, MobilApi.GET_ACTIVE_URL, new Response.Listener<String>() {
+        Log.i("URL", CustomerApi.GET_RIWAYAT_DATA + customer.getId_customer());
+        StringRequest stringRequest = new StringRequest(Request.Method.GET,
+                CustomerApi.GET_RIWAYAT_DATA + customer.getId_customer(), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Gson gson = new Gson();
                 RiwayatTransResponse riwayatTransResponse = gson.fromJson(response, RiwayatTransResponse.class);
-                adapter.setRiwayatTransListList(riwayatTransResponse.getPromoList());
-                rvRiwayat.setAdapter(adapter);
+                adapter.setRiwayatTransListList(riwayatTransResponse.getRiwayatTransList());
+//                rvRiwayat.setAdapter(adapter);
                 adapter.getFilter().filter(svRiwayat.getQuery());
-//                Toast toast = Toast.makeText(getContext(), mobilResponse.getMessage(), Toast.LENGTH_SHORT);
-//                toast.show();
+                Toast toast = Toast.makeText(getContext(), riwayatTransResponse.getMessage(), Toast.LENGTH_SHORT);
+                toast.show();
                 setLoading(false);
                 srRiwayat.setRefreshing(false);
             }

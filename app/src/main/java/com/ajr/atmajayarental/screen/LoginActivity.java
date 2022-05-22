@@ -134,11 +134,8 @@ public class LoginActivity extends AppCompatActivity {
         String email = textEmail.getEditText().getText().toString().trim();
         String password = textPassword.getEditText().getText().toString().trim();
 
-        Log.i("email", email + "");
-        Log.i("password", password + "");
-
-        Customer customer = new Customer(email, password);
-//        User user = new User(email, password);
+//        Customer customer = new Customer(email, password);
+        User user = new User(email, password);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, LoginApi.LOGIN, new Response.Listener<String>() {
             @Override
@@ -147,9 +144,9 @@ public class LoginActivity extends AppCompatActivity {
                 CustomerResponse customerResponse = gson.fromJson(response, CustomerResponse.class);
                 DriverResponse driverResponse = gson.fromJson(response, DriverResponse.class);
                 PegawaiResponse pegawaiResponse = gson.fromJson(response, PegawaiResponse.class);
-                Toast.makeText(LoginActivity.this, customerResponse.getMessage(), Toast.LENGTH_SHORT).show();
 
                 if(customerResponse.getKode() == 1){
+                    Toast.makeText(LoginActivity.this, customerResponse.getMessage(), Toast.LENGTH_SHORT).show();
                     Customer tempCustomer = customerResponse.getCustomer();
 
                     customerPreferences.setLogin(
@@ -171,7 +168,8 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 }
-                else if(driverResponse.getKode() == 2){
+                if(driverResponse.getKode() == 2){
+                    Toast.makeText(LoginActivity.this, driverResponse.getMessage(), Toast.LENGTH_SHORT).show();
                     Driver tempDriver = driverResponse.getDriver();
 
                     driverPreferences.setLogin(
@@ -202,8 +200,12 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 }
-                else if(pegawaiResponse.getKode() == 3){
 
+                if(pegawaiResponse.getKode() == 3 && (pegawaiResponse.getPegawai().getId_role() == 2 || pegawaiResponse.getPegawai().getId_role() == 3)){
+                    Toast.makeText(LoginActivity.this, "Admin/CS tidak mendapatkan akses", Toast.LENGTH_SHORT).show();
+                }
+                else if(pegawaiResponse.getKode() == 3){
+                    Toast.makeText(LoginActivity.this, pegawaiResponse.getMessage(), Toast.LENGTH_SHORT).show();
                     Pegawai tempPegawai = pegawaiResponse.getPegawai();
 
                     pegawaiPreferences.setLogin(
@@ -224,6 +226,9 @@ public class LoginActivity extends AppCompatActivity {
                     Intent intent = new Intent(LoginActivity.this, ManagerMainActivity.class);
                     startActivity(intent);
                     finish();
+                }
+                else {
+                    Toast.makeText(LoginActivity.this, "Terjadi Kesalahan Input", Toast.LENGTH_SHORT).show();
                 }
             }
         }, new Response.ErrorListener() {
@@ -248,7 +253,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public byte[] getBody() throws AuthFailureError {
                 Gson gson = new Gson();
-                String requestBody = gson.toJson(customer);
+                String requestBody = gson.toJson(user);
                 return requestBody.getBytes(StandardCharsets.UTF_8);
             }
 

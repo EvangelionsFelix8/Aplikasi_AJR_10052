@@ -7,6 +7,40 @@ public class RiwayatTrans {
             metode_pembayaran, bukti_bayar;
     private double total_harga, total_sewa_mobil, total_sewa_driver, total_denda, potongan_promo;
     private int rating_driver, rating_ajr;
+    private String nama_pegawai, nama_mobil, nama_driver;
+    private String jenis_promo;
+
+    public String getNama_mobil() {
+        return nama_mobil;
+    }
+
+    public void setNama_mobil(String nama_mobil) {
+        this.nama_mobil = nama_mobil;
+    }
+
+    public String getNama_driver() {
+        return nama_driver;
+    }
+
+    public void setNama_driver(String nama_driver) {
+        this.nama_driver = nama_driver;
+    }
+
+    public String getJenis_promo() {
+        return jenis_promo;
+    }
+
+    public void setJenis_promo(String jenis_promo) {
+        this.jenis_promo = jenis_promo;
+    }
+
+    public String getNama_pegawai() {
+        return nama_pegawai;
+    }
+
+    public void setNama_pegawai(String nama_pegawai) {
+        this.nama_pegawai = nama_pegawai;
+    }
 
     public RiwayatTrans(String id_transaksi, String id_driver, String id_customer, Long id_mobil, Long id_pegawai, Long id_promo,
                         String tanggal_transaksi, String tanggal_pengembalian, String tanggal_mulai, String tanggal_selesai,

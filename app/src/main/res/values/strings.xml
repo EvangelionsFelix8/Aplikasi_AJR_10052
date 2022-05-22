@@ -33,7 +33,7 @@
     <string name="tanggal_mulai">Tanggal Mulai</string>
     <string name="tanggal_selesai">Tanggal Selesai</string>
     <string name="berita_hari_ini">Berita Hari ini</string>
-    <string name="selamat_datang">Selamat Datang,</string>
+    <string name="selamat_datang">Selamat Datang, </string>
     <string name="nama_saya" tools:ignore="ExtraTranslation">Nama Saya</string>
     <string name="ini_belum_tahu_isinya_apa">Ini Belum Tahu isinya Apa</string>
     <string name="nama_customer">Nama Anda</string>
@@ -73,4 +73,11 @@
     <string name="status_transaksi">Status Transaksi</string>
     <string name="panah"><![CDATA[<-->]]></string>
     <string name="rp_total_harga">Rp Total Harga</string>
+    <string name="bahasa_inggris">Bahasa Inggris</string>
+    <string name="nomor_transaksi">Nomor Transaksi</string>
+    <string name="tanggal_mulai_sewa">Tanggal Mulai Sewa</string>
+    <string name="tanggal_selesai_sewa">Tanggal Selesai Sewa</string>
+    <string name="durasi_sewa">Durasi Sewa</string>
+    <string name="tanggal_kembali">Tanggal Kembali</string>
+    <string name="data_mobil">Data Mobil</string>
 </resources>

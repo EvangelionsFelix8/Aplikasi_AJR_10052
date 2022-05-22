@@ -18,6 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AtmaJayaRental">
         <activity
+            android:name=".screen.DetailRiwayatActivity"
+            android:exported="true" />
+        <activity
             android:name=".DriverMainActivity"
             android:exported="true" />
         <activity
@@ -26,9 +29,9 @@
         <activity
             android:name=".screen.LoginActivity"
             android:exported="true" />
-         <activity
-         android:name=".ManagerMainActivity"
-         android:exported="true" />
+        <activity
+            android:name=".ManagerMainActivity"
+            android:exported="true" />
         <activity
             android:name=".SplashScreen"
             android:configChanges="orientation|screenSize|keyboardHidden"

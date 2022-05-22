@@ -97,8 +97,8 @@ public class MobilFragment extends Fragment {
                 adapter.setMobilList(mobilResponse.getMobilList());
                 rvMobil.setAdapter(adapter);
                 adapter.getFilter().filter(svMobil.getQuery());
-//                Toast toast = Toast.makeText(getContext(), mobilResponse.getMessage(), Toast.LENGTH_SHORT);
-//                toast.show();
+                Toast toast = Toast.makeText(getContext(), mobilResponse.getMessage(), Toast.LENGTH_SHORT);
+                toast.show();
                 setLoading(false);
                 srMobil.setRefreshing(false);
             }

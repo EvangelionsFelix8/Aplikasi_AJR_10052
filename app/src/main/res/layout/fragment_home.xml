@@ -13,36 +13,36 @@
         style="@style/CustomCardViewStyle"
         android:backgroundTint="@color/biruTheme"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:textStyle="bold"
-        android:text="@string/selamat_datang"
-        android:textColor="@color/white"
-        android:translationZ="100dp"
-        android:textSize="20sp" />
+        <TextView
+            android:id="@+id/textNamaHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:translationZ="1dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_below="@id/carView">
+        android:layout_below="@id/carView"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/textJudul"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginBottom="10dp"
-            android:textSize="20sp"
-            android:textColor="@color/black"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/berita_hari_ini"/>
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/berita_hari_ini"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
         <com.denzcoskun.imageslider.ImageSlider
             android:id="@+id/image_slider"
@@ -57,15 +57,15 @@
 
         <TextView
             android:id="@+id/textJudulKedua"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginBottom="10dp"
-            android:textSize="20sp"
-            android:textColor="@color/black"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/ini_belum_tahu_isinya_apa"/>
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/ini_belum_tahu_isinya_apa"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
     </LinearLayout>
 
 </RelativeLayout>

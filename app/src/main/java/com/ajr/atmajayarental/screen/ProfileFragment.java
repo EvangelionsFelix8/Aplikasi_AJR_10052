@@ -71,7 +71,7 @@ public class ProfileFragment extends Fragment {
         });
     }
 
-    private void showCustomerData(){
+    public void showCustomerData(){
         StringRequest stringRequest = new StringRequest(
                 Request.Method.GET,
                 CustomerApi.GET_CUSTOMER_DATA + customer.getId_customer(), new Response.Listener<String>() {
