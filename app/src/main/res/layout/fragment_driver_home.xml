@@ -9,21 +9,54 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/carView"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
         style="@style/CustomCardViewStyle"
-        android:backgroundTint="@color/biruTheme"/>
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:backgroundTint="@color/biruTheme" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardFoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="12dp"
+        app:cardCornerRadius="50dp"
+        android:backgroundTint="@color/transparant">
+
+        <ImageView
+            android:id="@+id/fotoDriverHome"
+            android:layout_width="75dp"
+            android:scaleY="1.1"
+            android:scaleX="1.1"
+            android:layout_height="75dp" />
+
+    </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/textNamaHomeD"
+        android:layout_toEndOf="@id/cardFoto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:translationZ="1dp"
-        android:layout_marginStart="35dp"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:textStyle="bold"
         android:textColor="@color/white"
+        android:text="@string/selamat_datang"
         android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textNamaHomeD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_toEndOf="@id/cardFoto"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:translationZ="1dp" />
 </RelativeLayout>

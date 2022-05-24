@@ -13,6 +13,8 @@ public class DriverResponse {
 
     private int kode;
 
+    private float rata_rating;
+
     public int getKode() {
         return kode;
     }
@@ -50,5 +52,13 @@ public class DriverResponse {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public float getRata_rating() {
+        return rata_rating;
+    }
+
+    public void setRata_rating(float rata_rating) {
+        this.rata_rating = rata_rating;
     }
 }

@@ -68,4 +68,7 @@ dependencies {
 
     // Car Anima
     implementation 'com.airbnb.android:lottie:3.4.4'
+
+    // PDF
+    implementation 'com.itextpdf:itextg:5.5.10'
 }

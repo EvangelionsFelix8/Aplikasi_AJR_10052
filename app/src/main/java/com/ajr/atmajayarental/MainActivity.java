@@ -14,10 +14,12 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ajr.atmajayarental.models.Customer;
 import com.ajr.atmajayarental.preferences.CustomerPreferences;
 import com.ajr.atmajayarental.preferences.DriverPreferences;
 import com.ajr.atmajayarental.preferences.PegawaiPreferences;
@@ -41,8 +43,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Toolbar toolbar;
     TextView toolbarTitle;
     private CustomerPreferences customerPreferences;
-    private PegawaiPreferences pegawaiPreferences;
-    private DriverPreferences driverPreferences;
+    private Customer customer;
+    private TextView textNamaHeader, textEmailHeader;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -51,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
 
         customerPreferences = new CustomerPreferences(getApplicationContext());
+        customer = customerPreferences.getCustomerLogin();
 
         toolbar = findViewById(R.id.toolbar);
         toolbarTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
@@ -60,6 +63,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        // get findView ID yang di Header nya Navigation View
+        View header = navigationView.getHeaderView(0);
+        textNamaHeader = header.findViewById(R.id.namaCustHeader);
+        textEmailHeader = header.findViewById(R.id.emailCustHeader);
+
+        textNamaHeader.setText(customer.getNama_customer());
+        textEmailHeader.setText(customer.getEmail_customer());
+
+        // BOTTOM NAVIGATION
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
 

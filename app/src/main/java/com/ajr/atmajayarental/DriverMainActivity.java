@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
@@ -20,6 +21,7 @@ import com.ajr.atmajayarental.preferences.DriverPreferences;
 import com.ajr.atmajayarental.preferences.PegawaiPreferences;
 import com.ajr.atmajayarental.screen.DriverHomeFragment;
 import com.ajr.atmajayarental.screen.DriverProfileFragment;
+import com.ajr.atmajayarental.screen.DriverRiwayatFragment;
 import com.ajr.atmajayarental.screen.HomeFragment;
 import com.ajr.atmajayarental.screen.LoginActivity;
 import com.ajr.atmajayarental.screen.ProfileFragment;
@@ -49,6 +51,8 @@ public class DriverMainActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
+        Menu menu = bottomNavigationView.getMenu();
+
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,10 +93,18 @@ public class DriverMainActivity extends AppCompatActivity {
                 changeFragment(new DriverHomeFragment());
                 changeToolbarTitle();
                 toolbarTitle.setText("Home");
+                btnLogout.setVisibility(View.GONE);
             } else if (item.getItemId() == R.id.menuProfile) {
                 changeFragment(new DriverProfileFragment());
                 changeToolbarTitle();
                 toolbarTitle.setText("Profile Saya");
+                btnLogout.setVisibility(View.VISIBLE);
+            }
+            else if(item.getItemId() == R.id.menuRiwayat){
+                changeFragment(new DriverRiwayatFragment());
+                changeToolbarTitle();
+                toolbarTitle.setText("Riwayat Saya");
+                btnLogout.setVisibility(View.GONE);
             }
             return true;
         }

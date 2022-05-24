@@ -28,6 +28,7 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
+        android:id="@+id/namaCustHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
@@ -35,6 +36,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
+        android:id="@+id/emailCustHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/example_gmail_com" />

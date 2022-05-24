@@ -1,50 +1,33 @@
 package com.ajr.atmajayarental.screen;
 
-import static com.android.volley.Request.Method.GET;
-
-import android.app.Activity;
 import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
-import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import android.transition.AutoTransition;
-import android.transition.TransitionManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.view.animation.AnimationUtils;
-import android.widget.FrameLayout;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.SearchView;
 import android.widget.Toast;
 
-import com.ajr.atmajayarental.MainActivity;
 import com.ajr.atmajayarental.R;
 import com.ajr.atmajayarental.VolleySingleton;
 import com.ajr.atmajayarental.adapters.PromoAdapter;
-import com.ajr.atmajayarental.api.PromoApi;
+import com.ajr.atmajayarental.api.CustomerApi;
 import com.ajr.atmajayarental.models.Promo;
 import com.ajr.atmajayarental.models.PromoResponse;
-import com.ajr.atmajayarental.models.promo_dummy;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.google.android.material.progressindicator.LinearProgressIndicator;
 import com.google.gson.Gson;
 
@@ -80,6 +63,7 @@ public class PromoFragment extends Fragment {
         layoutLoading = view.findViewById(R.id.linearLoading);
         svPromo = view.findViewById(R.id.searchPromo);
         srPromo = view.findViewById(R.id.srPromo);
+
 
         svPromo.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -118,7 +102,7 @@ public class PromoFragment extends Fragment {
     public void getActivePromo(){
         setLoading(true);
         srPromo.setRefreshing(true);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, PromoApi.GET_ACTIVE_URL, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, CustomerApi.GET_ACTIVE_URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Gson gson = new Gson();

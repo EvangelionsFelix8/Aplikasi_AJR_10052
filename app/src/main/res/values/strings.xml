@@ -80,4 +80,11 @@
     <string name="durasi_sewa">Durasi Sewa</string>
     <string name="tanggal_kembali">Tanggal Kembali</string>
     <string name="data_mobil">Data Mobil</string>
+    <string name="click_me_for_details"><![CDATA[Click me for details >>]]></string>
+    <string name="riwayat">Riwayat</string>
+    <string name="tidak_tersedia">Tidak Tersedia</string>
+    <string name="tersedia">Tersedia</string>
+    <string name="pilih_status_saya">PILIH STATUS SAYA</string>
+    <string name="hold_me">hold me!</string>
+    <string name="simpan_perubahan">Simpan Perubahan</string>
 </resources>

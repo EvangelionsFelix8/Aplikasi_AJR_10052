@@ -9,6 +9,11 @@ public class Driver {
     private String berkas_bebas_napza, berkas_sim, berkas_sehat_jiwa, berkas_sehat_jasmani, berkas_skck;
     private float rerata_rating_driver;
     private int isAktif;
+    private float rata_rating;
+
+    public Driver(String status_ketersediaan_driver) {
+        this.status_ketersediaan_driver = status_ketersediaan_driver;
+    }
 
     public Driver(String access_token, String id_driver, String nama_driver, String alamat_driver, String email_driver, String status_ketersediaan_driver,
                   String status_berkas, int isEnglish, String tanggal_lahir_driver, String jenis_kelamin,
@@ -204,5 +209,29 @@ public class Driver {
 
     public void setAktif(int aktif) {
         isAktif = aktif;
+    }
+
+    public int getIsEnglish() {
+        return isEnglish;
+    }
+
+    public void setIsEnglish(int isEnglish) {
+        this.isEnglish = isEnglish;
+    }
+
+    public int getIsAktif() {
+        return isAktif;
+    }
+
+    public void setIsAktif(int isAktif) {
+        this.isAktif = isAktif;
+    }
+
+    public float getRata_rating() {
+        return rata_rating;
+    }
+
+    public void setRata_rating(float rata_rating) {
+        this.rata_rating = rata_rating;
     }
 }

@@ -10,13 +10,12 @@ import android.view.ViewGroup;
 
 import com.ajr.atmajayarental.R;
 
-public class DetailRiwayatFragment extends Fragment {
-
+public class DriverRiwayatFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detail_riwayat, container, false);
+        return inflater.inflate(R.layout.fragment_driver_riwayat, container, false);
     }
 }

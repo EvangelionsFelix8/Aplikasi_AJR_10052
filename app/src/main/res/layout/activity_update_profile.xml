@@ -8,30 +8,49 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="650dp"
-        tools:context=".screen.ProfileFragment">
+        android:layout_height="wrap_content"
+        tools:context=".screen.UpdateProfileActivity">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="center"
+            android:background="@color/biruTheme"
+            android:elevation="0dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/secular"
+                android:text="Edit Profile Anda"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:translationX="-15dp"
+                android:backgroundTint="@color/transparant"
+                android:src="@drawable/ic_baseline_arrow_back_ios_new_24"/>
+        </androidx.appcompat.widget.Toolbar>
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/carView"
-            style="@style/CustomCardViewStyle"
             android:layout_width="match_parent"
-            android:layout_height="310dp"
+            android:layout_height="220dp"
             android:backgroundTint="@color/biruTheme"
-            android:translationY="-40dp"
-            app:cardCornerRadius="40dp" />
-
-        <com.google.android.material.progressindicator.LinearProgressIndicator
-            android:id="@+id/linearLoading"
-            app:indicatorColor="@color/yellowTheme"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:indeterminate="true" />
+            android:layout_below="@id/toolbar" />
 
         <LinearLayout
             android:id="@+id/header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="65dp"
             android:gravity="center"
             android:orientation="vertical"
             android:translationZ="1dp">
@@ -48,7 +67,7 @@
                     android:src="@drawable/ic_launcher_background" />
 
                 <ImageView
-                    android:id="@+id/fotoDriver"
+                    android:id="@+id/fotoDriverE"
                     android:layout_width="110dp"
                     android:layout_height="110dp"
                     android:scaleX="1.5"
@@ -56,57 +75,25 @@
                     android:src="@drawable/ic_launcher_foreground" />
             </androidx.cardview.widget.CardView>
 
-            <RatingBar
-                android:id="@+id/rataRating"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:isIndicator="true"
-                android:numStars="5"
-                android:scaleX=".75"
-                android:scaleY=".75"
-                android:clickable="false"
-                android:theme="@style/RatingBar" />
-
-            <TextView
-                android:id="@+id/textNamaDriver"
+            <EditText
+                android:id="@+id/textNamaDriverE"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/nama_driver"
                 android:textColor="@color/white"
                 android:textSize="20sp"
+                android:backgroundTint="@color/white"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/textEmailDriver"
+            <EditText
+                android:id="@+id/textEmailDriverE"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/example_gmail_com"
-                android:textColor="@color/grey_font"
+                android:textColor="@color/white"
                 android:textSize="18sp"
+                android:backgroundTint="@color/white"
                 android:textStyle="bold" />
-
-            <ImageButton
-                android:id="@+id/btnEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/transparant"
-                android:clickable="true"
-                android:elevation="0dp"
-                android:src="@drawable/ic_baseline_edit_24"
-                android:tooltipText="Edit Profile"
-                app:tint="@color/white" />
-
-            <!--            <Button-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:backgroundTint="@color/yellowTheme"-->
-            <!--                android:elevation="100dp"-->
-            <!--                android:scaleX="0.7"-->
-            <!--                android:scaleY="0.7"-->
-            <!--                android:src="@drawable/ic_baseline_edit_24"-->
-            <!--                android:text="@string/edit_profile"-->
-            <!--                android:tooltipText="Edit Profile"-->
-            <!--                app:tint="@color/white" />-->
         </LinearLayout>
 
         <LinearLayout
@@ -114,54 +101,9 @@
             android:layout_height="match_parent"
             android:layout_below="@id/header"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="35dp"
             android:layout_marginEnd="20dp"
             android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_keyboard_arrow_down_24"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="10sp"
-                    android:text="@string/hold_me"
-                    tools:ignore="SmallSp" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_keyboard_arrow_down_24"/>
-
-            </LinearLayout>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardStatusD"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                app:cardElevation="0dp"
-                android:layout_marginBottom="25dp"
-                app:cardCornerRadius="10dp">
-
-                <TextView
-                    android:id="@+id/textStatusTersedia"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="8dp"
-                    android:gravity="center"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-            </com.google.android.material.card.MaterialCardView>
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -181,25 +123,19 @@
                     android:textSize="18sp" />
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/textTeleponDriver"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/textTeleponDriverE"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="35dp"
                 android:fontFamily="@font/fredoka"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginBottom="25dp"
-                android:background="@android:color/darker_gray" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -215,25 +151,19 @@
                     android:textSize="18sp" />
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/textAlamatDriver"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/textAlamatDriverE"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="35dp"
                 android:fontFamily="@font/fredoka"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginBottom="25dp"
-                android:background="@android:color/darker_gray" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -249,25 +179,19 @@
                     android:textSize="18sp" />
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/textTanggalDriver"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/textTanggalDriverE"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="35dp"
                 android:fontFamily="@font/fredoka"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginBottom="25dp"
-                android:background="@android:color/darker_gray" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -283,25 +207,20 @@
                     android:textSize="18sp" />
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/textKelaminDriver"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/textKelaminDriverE"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="35dp"
                 android:fontFamily="@font/fredoka"
                 android:textColor="@color/black"
+                android:enabled="false"
                 android:textSize="18sp" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginBottom="25dp"
-                android:background="@android:color/darker_gray" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -317,21 +236,22 @@
                     android:textSize="18sp" />
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/textBahasaInggris"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/textBahasaInggrisE"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="35dp"
                 android:fontFamily="@font/fredoka"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
-            <View
+            <Button
+                android:id="@+id/btnSaveEdit"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginBottom="25dp"
-                android:background="@android:color/darker_gray" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="20dp"
+                android:text="@string/simpan_perubahan"/>
         </LinearLayout>
     </RelativeLayout>
 </ScrollView>

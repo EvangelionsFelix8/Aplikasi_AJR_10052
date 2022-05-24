@@ -1,13 +1,9 @@
 package com.ajr.atmajayarental.screen;
 
-import static com.android.volley.Request.Method.POST;
-
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.appsearch.GenericDocument;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -38,7 +34,6 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.nio.charset.StandardCharsets;
@@ -222,13 +217,9 @@ public class LoginActivity extends AppCompatActivity {
                             tempPegawai.getUrl_foto_pegawai(),
                             tempPegawai.isAktif()
                     );
-
                     Intent intent = new Intent(LoginActivity.this, ManagerMainActivity.class);
                     startActivity(intent);
                     finish();
-                }
-                else {
-                    Toast.makeText(LoginActivity.this, "Terjadi Kesalahan Input", Toast.LENGTH_SHORT).show();
                 }
             }
         }, new Response.ErrorListener() {

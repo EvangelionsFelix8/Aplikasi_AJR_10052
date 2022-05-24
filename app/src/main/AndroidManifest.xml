@@ -18,6 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AtmaJayaRental">
         <activity
+            android:name=".screen.UpdateProfileActivity"
+            android:exported="true" />
+        <activity
             android:name=".screen.DetailRiwayatActivity"
             android:exported="true" />
         <activity

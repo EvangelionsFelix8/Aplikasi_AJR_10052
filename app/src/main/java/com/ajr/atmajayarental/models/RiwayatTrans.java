@@ -1,14 +1,103 @@
 package com.ajr.atmajayarental.models;
 
+import android.util.Log;
+import android.widget.ImageView;
+
+import androidx.databinding.BindingAdapter;
+
+import com.ajr.atmajayarental.api.DriverApi;
+import com.ajr.atmajayarental.api.MobilApi;
+import com.bumptech.glide.Glide;
+
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class RiwayatTrans {
     private String id_transaksi, id_driver, id_customer;
     private Long id_mobil, id_pegawai, id_promo;
     private String tanggal_transaksi, tanggal_pengembalian, tanggal_mulai, tanggal_selesai, status_transaksi,
             metode_pembayaran, bukti_bayar;
     private double total_harga, total_sewa_mobil, total_sewa_driver, total_denda, potongan_promo;
-    private int rating_driver, rating_ajr;
+    private int rating_driver, rating_ajr, besar_diskon_promo;
     private String nama_pegawai, nama_mobil, nama_driver;
-    private String jenis_promo;
+    private String jenis_promo, plat_nomor;
+    private Duration durasi;
+    private double harga_sewa_mobil, tarif_sewa_driver;
+    private String url_foto_mobil, url_foto_driver;
+
+    @BindingAdapter("android:loadImageMobil")
+    public static void loadImage(ImageView imageView, String imgURL){
+        Glide.with(imageView)
+                .load(imgURL)
+                .into(imageView);
+    }
+
+    @BindingAdapter("android:loadImageDriver")
+    public static void loadImageDriver(ImageView imageView, String imgURL){
+        Glide.with(imageView)
+                .load(imgURL)
+                .into(imageView);
+    }
+
+    public String getUrl_foto_mobil() {
+        String tempFoto = MobilApi.BASE_URL_FOTO + "storage/"+ url_foto_mobil;
+        Log.i("tempfoto", tempFoto);
+        return tempFoto;
+    }
+
+    public void setUrl_foto_mobil(String url_foto_mobil) {
+        this.url_foto_mobil = url_foto_mobil;
+    }
+
+    public String getUrl_foto_driver() {
+        String tempFoto = DriverApi.BASE_URL_FOTO + "storage/"+ url_foto_driver;
+        return tempFoto;
+    }
+
+    public void setUrl_foto_driver(String url_foto_driver) {
+        this.url_foto_driver = url_foto_driver;
+    }
+
+    public String formatKurs(double inputan){
+        DecimalFormat kursIndonesia = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+        DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
+
+        formatRp.setCurrencySymbol("Rp ");
+        kursIndonesia.setDecimalFormatSymbols(formatRp);
+
+        return kursIndonesia.format(inputan);
+    }
+
+    public String getHarga_sewa_mobil() {
+        return formatKurs(harga_sewa_mobil);
+    }
+
+    public void setHarga_sewa_mobil(double harga_sewa_mobil) {
+        this.harga_sewa_mobil = harga_sewa_mobil;
+    }
+
+    public String getPlat_nomor() {
+        return plat_nomor;
+    }
+
+    public void setPlat_nomor(String plat_nomor) {
+        this.plat_nomor = plat_nomor;
+    }
+
+    public int getDurasi() {
+        LocalDateTime mulai = LocalDateTime.parse(getTanggal_mulai(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        LocalDateTime selesai = LocalDateTime.parse(getTanggal_selesai(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+
+        Duration durasi = Duration.between(mulai, selesai);
+        return (int) durasi.toDays();
+    }
+
+    public void setDurasi(Duration durasi) {
+        this.durasi = durasi;
+    }
 
     public String getNama_mobil() {
         return nama_mobil;
@@ -173,6 +262,15 @@ public class RiwayatTrans {
         this.bukti_bayar = bukti_bayar;
     }
 
+    public String getTotal_hargaBinding() {
+        return formatKurs(total_harga);
+    }
+
+    public String getTotalKeseluruhan(){
+        double tempTotal = total_harga - potongan_promo;
+        return formatKurs(tempTotal);
+    }
+
     public double getTotal_harga() {
         return total_harga;
     }
@@ -181,32 +279,32 @@ public class RiwayatTrans {
         this.total_harga = total_harga;
     }
 
-    public double getTotal_sewa_mobil() {
-        return total_sewa_mobil;
+    public String getTotal_sewa_mobil() {
+        return formatKurs(total_sewa_mobil);
     }
 
     public void setTotal_sewa_mobil(double total_sewa_mobil) {
         this.total_sewa_mobil = total_sewa_mobil;
     }
 
-    public double getTotal_sewa_driver() {
-        return total_sewa_driver;
+    public String getTotal_sewa_driver() {
+        return formatKurs(total_sewa_driver);
     }
 
     public void setTotal_sewa_driver(double total_sewa_driver) {
         this.total_sewa_driver = total_sewa_driver;
     }
 
-    public double getTotal_denda() {
-        return total_denda;
+    public String getTotal_denda() {
+        return formatKurs(total_denda);
     }
 
     public void setTotal_denda(double total_denda) {
         this.total_denda = total_denda;
     }
 
-    public double getPotongan_promo() {
-        return potongan_promo;
+    public String getPotongan_promo() {
+        return formatKurs(potongan_promo);
     }
 
     public void setPotongan_promo(double potongan_promo) {
@@ -227,5 +325,21 @@ public class RiwayatTrans {
 
     public void setRating_ajr(int rating_ajr) {
         this.rating_ajr = rating_ajr;
+    }
+
+    public String getTarif_sewa_driver() {
+        return formatKurs(tarif_sewa_driver);
+    }
+
+    public void setTarif_sewa_driver(double tarif_sewa_driver) {
+        this.tarif_sewa_driver = tarif_sewa_driver;
+    }
+
+    public int getBesar_diskon_promo() {
+        return besar_diskon_promo;
+    }
+
+    public void setBesar_diskon_promo(int besar_diskon_promo) {
+        this.besar_diskon_promo = besar_diskon_promo;
     }
 }

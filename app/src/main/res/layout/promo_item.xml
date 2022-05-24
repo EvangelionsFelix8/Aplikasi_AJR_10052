@@ -11,6 +11,8 @@
     android:layout_marginBottom="5dp">
 
         <com.google.android.material.card.MaterialCardView
+            app:strokeColor="@color/biruTheme"
+            app:strokeWidth="3dp"
             app:cardElevation="1dp"
             android:id="@+id/carditem"
             android:layout_width="match_parent"

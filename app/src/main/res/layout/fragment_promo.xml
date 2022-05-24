@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".screen.PromoFragment"
-    android:background="#efefef">
+    tools:context=".screen.PromoFragment">
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/linearLoading"
@@ -46,8 +45,7 @@
                 android:id="@+id/rvPromo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@id/searchPromo"
-                tools:listitem="@layout/promo_item" />
+                android:layoutAnimation="@anim/layout_animation" />
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </RelativeLayout>
 </FrameLayout>
