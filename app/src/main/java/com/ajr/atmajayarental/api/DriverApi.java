@@ -7,5 +7,8 @@ public class DriverApi {
     public static final String GET_DRIVER_DATA = BASE_URL + "driver/";
     public static final String GET_RATA_RATING_DRIVER = BASE_URL + "getreratadriverbyid/";
     public static final String UPDATE_STATUS_DRIVER = BASE_URL + "updateketersediaandriver/";
+    public static final String UPDATE_DATA_DRIVER = BASE_URL + "updatedriver/";
 
+    // RIWAYAT TRANSAKSI
+    public static final String SHOW_RIWAYAT = BASE_URL + "showbydriver/";
 }

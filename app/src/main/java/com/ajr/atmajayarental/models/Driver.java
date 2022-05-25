@@ -1,6 +1,12 @@
 package com.ajr.atmajayarental.models;
 
-public class Driver {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
+// Kalo mereturnkan banyak value pake nya parceable, kalo hanya 1 saja gak perlu pakai
+public class Driver implements Parcelable {
     private String access_token;
     private String id_driver, nama_driver, alamat_driver, email_driver, status_ketersediaan_driver, status_berkas;
     private int isEnglish;
@@ -13,6 +19,14 @@ public class Driver {
 
     public Driver(String status_ketersediaan_driver) {
         this.status_ketersediaan_driver = status_ketersediaan_driver;
+    }
+
+    public Driver(String nama_driver,String email_driver, String no_telp_driver, String alamat_driver , int isEnglish) {
+        this.nama_driver = nama_driver;
+        this.alamat_driver = alamat_driver;
+        this.email_driver = email_driver;
+        this.no_telp_driver = no_telp_driver;
+        this.isEnglish = isEnglish;
     }
 
     public Driver(String access_token, String id_driver, String nama_driver, String alamat_driver, String email_driver, String status_ketersediaan_driver,
@@ -42,6 +56,43 @@ public class Driver {
         this.rerata_rating_driver = rerata_rating_driver;
         this.isAktif = isAktif;
     }
+
+    protected Driver(Parcel in) {
+        access_token = in.readString();
+        id_driver = in.readString();
+        nama_driver = in.readString();
+        alamat_driver = in.readString();
+        email_driver = in.readString();
+        status_ketersediaan_driver = in.readString();
+        status_berkas = in.readString();
+        isEnglish = in.readInt();
+        tanggal_lahir_driver = in.readString();
+        jenis_kelamin = in.readString();
+        no_telp_driver = in.readString();
+        url_foto_driver = in.readString();
+        password = in.readString();
+        tarif_sewa_driver = in.readFloat();
+        berkas_bebas_napza = in.readString();
+        berkas_sim = in.readString();
+        berkas_sehat_jiwa = in.readString();
+        berkas_sehat_jasmani = in.readString();
+        berkas_skck = in.readString();
+        rerata_rating_driver = in.readFloat();
+        isAktif = in.readInt();
+        rata_rating = in.readFloat();
+    }
+
+    public static final Creator<Driver> CREATOR = new Creator<Driver>() {
+        @Override
+        public Driver createFromParcel(Parcel in) {
+            return new Driver(in);
+        }
+
+        @Override
+        public Driver[] newArray(int size) {
+            return new Driver[size];
+        }
+    };
 
     public String getAccess_token() {
         return access_token;
@@ -233,5 +284,36 @@ public class Driver {
 
     public void setRata_rating(float rata_rating) {
         this.rata_rating = rata_rating;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(access_token);
+        parcel.writeString(id_driver);
+        parcel.writeString(nama_driver);
+        parcel.writeString(alamat_driver);
+        parcel.writeString(email_driver);
+        parcel.writeString(status_ketersediaan_driver);
+        parcel.writeString(status_berkas);
+        parcel.writeInt(isEnglish);
+        parcel.writeString(tanggal_lahir_driver);
+        parcel.writeString(jenis_kelamin);
+        parcel.writeString(no_telp_driver);
+        parcel.writeString(url_foto_driver);
+        parcel.writeString(password);
+        parcel.writeFloat(tarif_sewa_driver);
+        parcel.writeString(berkas_bebas_napza);
+        parcel.writeString(berkas_sim);
+        parcel.writeString(berkas_sehat_jiwa);
+        parcel.writeString(berkas_sehat_jasmani);
+        parcel.writeString(berkas_skck);
+        parcel.writeFloat(rerata_rating_driver);
+        parcel.writeInt(isAktif);
+        parcel.writeFloat(rata_rating);
     }
 }

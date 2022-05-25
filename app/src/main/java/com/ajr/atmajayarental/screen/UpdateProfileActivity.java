@@ -1,35 +1,72 @@
 package com.ajr.atmajayarental.screen;
 
+import static com.android.volley.Request.Method.PUT;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ajr.atmajayarental.R;
+import com.ajr.atmajayarental.VolleySingleton;
 import com.ajr.atmajayarental.api.DriverApi;
 import com.ajr.atmajayarental.models.Driver;
+import com.ajr.atmajayarental.models.DriverResponse;
 import com.ajr.atmajayarental.models.RiwayatTrans;
+import com.ajr.atmajayarental.preferences.DriverPreferences;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.bumptech.glide.Glide;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
 
-public class UpdateProfileActivity extends AppCompatActivity {
+import org.json.JSONObject;
 
-    private Driver driver;
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
+
+public class UpdateProfileActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+//public class UpdateProfileActivity extends AppCompatActivity {
+
+    private Driver driver, driverReturn;
     private ImageView fotoDriver;
-    private EditText textEditNama, textEditEmail, textEditNomor, textEditTanggal, textEditKelamin, textEditAlamat, textEditInggris;
+    private EditText textEditNama, textEditEmail, textEditNomor, textEditKelamin, textEditAlamat;
+    private AutoCompleteTextView textEditTanggal;
+    private Spinner textEditInggris;
+//    private AutoCompleteTextView textEditInggris;
     private Button btnSaveEdit;
     private ImageButton btnBack;
+    private String tempInggris;
+
+    private DriverPreferences driverPreferences;
+
+    private static final String[] EnglishArray = new String[]{
+            "Bisa","Tidak Bisa"
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_profile);
+
+        driverPreferences = new DriverPreferences(getApplicationContext());
+        driver = driverPreferences.getDriverLogin();
 
         fotoDriver = findViewById(R.id.fotoDriverE);
         textEditNama = findViewById(R.id.textNamaDriverE);
@@ -40,6 +77,10 @@ public class UpdateProfileActivity extends AppCompatActivity {
         textEditAlamat = findViewById(R.id.textAlamatDriverE);
         textEditInggris = findViewById(R.id.textBahasaInggrisE);
         btnSaveEdit = findViewById(R.id.btnSaveEdit);
+
+        ArrayAdapter<String> adapterInggris = new ArrayAdapter<>(this, R.layout.list_item, EnglishArray);
+        textEditInggris.setAdapter(adapterInggris);
+        textEditInggris.setOnItemSelectedListener(this);
 
         String strProfile = getIntent().getStringExtra("editProfile");
         Gson gson = new Gson();
@@ -56,16 +97,47 @@ public class UpdateProfileActivity extends AppCompatActivity {
         textEditKelamin.setText(driver.getJenis_kelamin());
         textEditAlamat.setText(driver.getAlamat_driver());
         if(driver.isEnglish() == 1){
-            textEditInggris.setText("Bisa");
+            int spinnerPosition = adapterInggris.getPosition("Bisa");
+            textEditInggris.setSelection(spinnerPosition);
         }
         else{
-            textEditInggris.setText("Tidak Bisa");
+            int spinnerPosition = adapterInggris.getPosition("Tidak Bisa");
+            textEditInggris.setSelection(spinnerPosition);
         }
+
+//        if(driver.isEnglish() == 1){
+//            textEditInggris.setText("Bisa");
+//        }
+//        else{
+//            textEditInggris.setText("Tidak Bisa");
+//        }
 
         btnSaveEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Berhasil Edit Data", Toast.LENGTH_SHORT).show();
+                String nama, email, nomorTelepon, alamat;
+                int inggris;
+
+                nama = textEditNama.getText().toString().trim();
+                email = textEditEmail.getText().toString().trim();
+                nomorTelepon = textEditNomor.getText().toString().trim();
+                alamat = textEditAlamat.getText().toString().trim();
+
+                if(tempInggris.equalsIgnoreCase("Bisa")){
+                    inggris = 1;
+                }
+                else{
+                    inggris = 2;
+                }
+
+//                if(tempInggris.equalsIgnoreCase("Bisa")){
+//                    inggris = 1;
+//                }
+//                else{
+//                    inggris = 2;
+//                }
+
+                updateDriver(nama, email, nomorTelepon, alamat, inggris);
             }
         });
 
@@ -76,5 +148,85 @@ public class UpdateProfileActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
+    }
+
+    public void onBackPressed1() {
+        Intent i = new Intent();
+        i.putExtra("getEdit", driverReturn);
+        setResult(RESULT_OK, i);
+        finish();
+    }
+
+    private void updateDriver(String nama, String email, String noTelp, String alamat, int inggris){
+
+        Driver updatedDriver = new Driver(
+                nama,
+                email,
+                noTelp,
+                alamat,
+                inggris
+        );
+
+        Log.i("url", DriverApi.UPDATE_DATA_DRIVER + driver.getId_driver());
+        StringRequest stringRequest = new StringRequest(PUT,
+                DriverApi.UPDATE_DATA_DRIVER + driver.getId_driver(), new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Gson gson = new Gson();
+
+                DriverResponse driverResponse = gson.fromJson(response, DriverResponse.class);
+                Toast.makeText(getApplicationContext(), driverResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                driverReturn = updatedDriver;
+                driverPreferences.setEditDataLogin(
+                        nama,
+                        email,
+                        noTelp,
+                        alamat,
+                        inggris
+                );
+                onBackPressed1();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                try {
+                    String responseBody = new String(error.networkResponse.data, StandardCharsets.UTF_8);
+                    JSONObject errors = new JSONObject(responseBody);
+                    Toast.makeText(getApplicationContext(), errors.getString("message"), Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Accept", "application/json");
+                headers.put("Authorization", "Bearer "+ driverPreferences.getDriverLogin().getAccess_token());
+                return headers;
+            }
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                Gson gson = new Gson();
+                String requestBody = gson.toJson(updatedDriver);
+                return requestBody.getBytes(StandardCharsets.UTF_8);
+            }
+            @Override
+            public String getBodyContentType() {
+                return "application/json";
+            }
+        };
+        VolleySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
+    }
+
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        tempInggris = textEditInggris.getSelectedItem().toString();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }

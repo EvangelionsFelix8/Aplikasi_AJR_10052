@@ -13,7 +13,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,19 +25,13 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ajr.atmajayarental.DriverMainActivity;
 import com.ajr.atmajayarental.R;
 import com.ajr.atmajayarental.VolleySingleton;
-import com.ajr.atmajayarental.api.CustomerApi;
 import com.ajr.atmajayarental.api.DriverApi;
-import com.ajr.atmajayarental.api.MobilApi;
-import com.ajr.atmajayarental.models.Customer;
-import com.ajr.atmajayarental.models.CustomerResponse;
 import com.ajr.atmajayarental.models.Driver;
 import com.ajr.atmajayarental.models.DriverResponse;
 import com.ajr.atmajayarental.models.RerataRating;
 import com.ajr.atmajayarental.models.RerataRatingResponse;
-import com.ajr.atmajayarental.preferences.CustomerPreferences;
 import com.ajr.atmajayarental.preferences.DriverPreferences;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -71,6 +64,27 @@ public class DriverProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_driver_profile, container, false);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 1){
+            if(resultCode == RESULT_OK){
+                Driver driverGet = data.getParcelableExtra("getEdit");
+                textNama.setText(driverGet.getNama_driver());
+                textEmail.setText(driverGet.getEmail_driver());
+                textNomorTelepon.setText(driverGet.getNo_telp_driver());
+                textAlamat.setText(driverGet.getAlamat_driver());
+                if(driverGet.isEnglish() == 1){
+                    textInggris.setText("Bisa");
+                }
+                else{
+                    textInggris.setText("Tidak Bisa");
+                }
+                changeFragment(new DriverProfileFragment());
+            }
+        }
     }
 
     @Override
@@ -107,7 +121,8 @@ public class DriverProfileFragment extends Fragment {
 //                Menyisipkan data json string ke intent
                 updateProfile.putExtra("editProfile", strProfile);
 
-                getContext().startActivity(updateProfile);
+                startActivityForResult(updateProfile, 1);
+//                getContext().startA(updateProfile);
             }
         });
         

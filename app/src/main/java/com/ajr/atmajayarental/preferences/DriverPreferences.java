@@ -73,6 +73,16 @@ public class DriverPreferences {
                 editor.commit();
         }
 
+        public void setEditDataLogin(String nama_driver, String email_driver,String no_telp_driver, String alamat_driver, int isEnglish){
+                editor.putString(KEY_NAME, nama_driver);
+                editor.putString(KEY_ALAMAT, alamat_driver);
+                editor.putString(KEY_EMAIL, email_driver);
+                editor.putInt(KEY_ENGLISH, isEnglish);
+                editor.putString(KEY_TELEPON, no_telp_driver);
+
+                editor.commit();
+        }
+
         public Driver getDriverLogin(){
                 String access_token;
                 String id_driver, nama_driver, alamat_driver, email_driver, status_ketersediaan_driver, status_berkas;

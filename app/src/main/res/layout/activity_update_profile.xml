@@ -179,14 +179,29 @@
                     android:textSize="18sp" />
             </LinearLayout>
 
-            <EditText
-                android:id="@+id/textTanggalDriverE"
+<!--            <EditText-->
+<!--                android:id="@+id/textTanggalDriverE"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="35dp"-->
+<!--                android:fontFamily="@font/fredoka"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="18sp" />-->
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="35dp"
-                android:fontFamily="@font/fredoka"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:enabled="false">
+
+                <AutoCompleteTextView
+                    android:id="@+id/textTanggalDriverE"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="none" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -236,14 +251,34 @@
                     android:textSize="18sp" />
             </LinearLayout>
 
-            <EditText
+<!--            <EditText-->
+<!--                android:id="@+id/textBahasaInggrisE"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="35dp"-->
+<!--                android:fontFamily="@font/fredoka"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="18sp" />-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_marginStart="35dp">-->
+
+<!--                <AutoCompleteTextView-->
+<!--                    android:id="@+id/textBahasaInggrisE"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:inputType="none" />-->
+
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+            <Spinner
                 android:id="@+id/textBahasaInggrisE"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="35dp"
-                android:fontFamily="@font/fredoka"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:layout_height="50dp"
+                android:layout_marginStart="20dp"/>
 
             <Button
                 android:id="@+id/btnSaveEdit"
