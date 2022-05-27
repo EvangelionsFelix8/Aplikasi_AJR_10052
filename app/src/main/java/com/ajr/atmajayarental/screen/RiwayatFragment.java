@@ -1,6 +1,9 @@
 package com.ajr.atmajayarental.screen;
 
+import android.app.AlertDialog;
 import android.content.res.Configuration;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,10 +13,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.SearchView;
 import android.widget.Toast;
 
@@ -60,7 +65,6 @@ public class RiwayatFragment extends Fragment {
     Configuration newConfig;
     private CustomerPreferences customerPreferences;
     private Customer customer;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -72,6 +76,8 @@ public class RiwayatFragment extends Fragment {
 
         customerPreferences = new CustomerPreferences(getContext());
         customer = customerPreferences.getCustomerLogin();
+
+        listRiwayat = new ArrayList<>();
 
         svRiwayat.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -95,7 +101,7 @@ public class RiwayatFragment extends Fragment {
 
         rvRiwayat.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        listRiwayat = new ArrayList<>();
+
         adapter = new RiwayatAdapter(getContext(), listRiwayat);
         rvRiwayat.setAdapter(adapter);
         getRiwayatList();
@@ -112,13 +118,31 @@ public class RiwayatFragment extends Fragment {
             public void onResponse(String response) {
                 Gson gson = new Gson();
                 RiwayatTransResponse riwayatTransResponse = gson.fromJson(response, RiwayatTransResponse.class);
-                adapter.setRiwayatTransListList(riwayatTransResponse.getRiwayatTransList());
-//                rvRiwayat.setAdapter(adapter);
-                adapter.getFilter().filter(svRiwayat.getQuery());
-                Toast toast = Toast.makeText(getContext(), riwayatTransResponse.getMessage(), Toast.LENGTH_SHORT);
-                toast.show();
-                setLoading(false);
-                srRiwayat.setRefreshing(false);
+                if(riwayatTransResponse.getRiwayatTransList().size() > 0){
+                    adapter.setRiwayatTransListList(riwayatTransResponse.getRiwayatTransList());
+                    adapter.getFilter().filter(svRiwayat.getQuery());
+                    Toast toast = Toast.makeText(getContext(), riwayatTransResponse.getMessage(), Toast.LENGTH_SHORT);
+                    toast.show();
+                    setLoading(false);
+                    srRiwayat.setRefreshing(false);
+                }
+                else {
+                    LayoutInflater layoutInflater = LayoutInflater.from(getContext());
+                    View emptyView = layoutInflater.inflate(R.layout.empty_layout, null);
+                    final android.app.AlertDialog alertDialog = new AlertDialog
+                            .Builder(emptyView.getContext()).create();
+                    alertDialog.setView(emptyView);
+                    alertDialog.show();
+                    svRiwayat.setVisibility(View.GONE);
+                    alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    getFragmentManager()
+                            .beginTransaction()
+                            .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
+                            .replace(R.id.layout_fragment, new EmptyFragmentLayout())
+                            .commit();
+                    setLoading(false);
+                    srRiwayat.setRefreshing(false);
+                }
             }
         }, new Response.ErrorListener() {
             @Override

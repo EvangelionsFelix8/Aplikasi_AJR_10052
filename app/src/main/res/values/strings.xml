@@ -87,9 +87,11 @@
     <string name="pilih_status_saya">PILIH STATUS SAYA</string>
     <string name="hold_me">hold me!</string>
     <string name="simpan_perubahan">Simpan Perubahan</string>
+    <string name="yuk_menyewa">Yuk Menyewa !</string>
+    <string name="belom_ada_riwayat">Belom Ada Riwayat</string>
 
-<!--    <string-array name="inggris_array">-->
-<!--        <item>Bisa</item>-->
-<!--        <item>Tidak Bisa</item>-->
-<!--    </string-array>-->
+    <!--    <string-array name="inggris_array">-->
+    <!--        <item>Bisa</item>-->
+    <!--        <item>Tidak Bisa</item>-->
+    <!--    </string-array>-->
 </resources>
