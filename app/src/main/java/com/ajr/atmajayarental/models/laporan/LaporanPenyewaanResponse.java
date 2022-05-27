@@ -1,4 +1,4 @@
-package com.ajr.atmajayarental.models;
+package com.ajr.atmajayarental.models.laporan;
 
 import com.google.gson.annotations.SerializedName;
 

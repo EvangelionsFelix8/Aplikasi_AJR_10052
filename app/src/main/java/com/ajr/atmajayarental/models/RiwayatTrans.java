@@ -44,7 +44,6 @@ public class RiwayatTrans {
 
     public String getUrl_foto_mobil() {
         String tempFoto = MobilApi.BASE_URL_FOTO + "storage/"+ url_foto_mobil;
-        Log.i("tempfoto", tempFoto);
         return tempFoto;
     }
 
@@ -53,7 +52,7 @@ public class RiwayatTrans {
     }
 
     public String getUrl_foto_driver() {
-        String tempFoto = DriverApi.BASE_URL_FOTO + "storage/"+ url_foto_driver;
+        String tempFoto = DriverApi.BASE_URL_FOTO + url_foto_driver;
         return tempFoto;
     }
 

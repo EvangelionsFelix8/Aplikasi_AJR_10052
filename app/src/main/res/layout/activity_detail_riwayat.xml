@@ -319,12 +319,12 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp">
 
-                                <ImageView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="150dp"
-                                    android:loadImageDriver="@{riwayat.url_foto_driver}"
-                                    android:scaleX="2.0"
-                                    android:scaleY="2.0" />
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="150dp"
+                                android:loadImageDriver="@{riwayat.url_foto_driver}"
+                                android:scaleX="2.0"
+                                android:scaleY="2.0" />
                         </RelativeLayout>
 
                         <RelativeLayout
