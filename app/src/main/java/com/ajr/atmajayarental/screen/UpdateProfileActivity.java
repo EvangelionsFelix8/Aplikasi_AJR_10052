@@ -2,8 +2,10 @@ package com.ajr.atmajayarental.screen;
 
 import static com.android.volley.Request.Method.PUT;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -115,29 +117,39 @@ public class UpdateProfileActivity extends AppCompatActivity implements AdapterV
         btnSaveEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String nama, email, nomorTelepon, alamat;
-                int inggris;
+                // Dikasih array karena kalo getText.toString nya gak dipakein error, (BISA JALAN)
+                final String[] nama = new String[1];
+                final String[] email = new String[1];
+                final String[] nomorTelepon = new String[1];
+                final String[] alamat = new String[1];
+                final int[] inggris = new int[1];
 
-                nama = textEditNama.getText().toString().trim();
-                email = textEditEmail.getText().toString().trim();
-                nomorTelepon = textEditNomor.getText().toString().trim();
-                alamat = textEditAlamat.getText().toString().trim();
+//                Toast.makeText(getApplicationContext(), "HELo", Toast.LENGTH_SHORT).show();
 
-                if(tempInggris.equalsIgnoreCase("Bisa")){
-                    inggris = 1;
-                }
-                else{
-                    inggris = 2;
-                }
+                final AlertDialog alertDialog = new AlertDialog.Builder(getApplicationContext()).create();
 
-//                if(tempInggris.equalsIgnoreCase("Bisa")){
-//                    inggris = 1;
-//                }
-//                else{
-//                    inggris = 2;
-//                }
+                new AlertDialog.Builder(UpdateProfileActivity.this)
+                        .setTitle("WARNING")
+                        .setMessage("Apakah Anda Yakin ingin mengedit Profile Anda?")
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                nama[0] = textEditNama.getText().toString().trim();
+                                email[0] = textEditEmail.getText().toString().trim();
+                                nomorTelepon[0] = textEditNomor.getText().toString().trim();
+                                alamat[0] = textEditAlamat.getText().toString().trim();
 
-                updateDriver(nama, email, nomorTelepon, alamat, inggris);
+                                if(tempInggris.equalsIgnoreCase("Bisa")){
+                                    inggris[0] = 1;
+                                }
+                                else{
+                                    inggris[0] = 2;
+                                }
+
+                                updateDriver(nama[0], email[0], nomorTelepon[0], alamat[0], inggris[0]);
+                                alertDialog.dismiss();
+                            }})
+                        .setNegativeButton(android.R.string.no, null).show();
             }
         });
 

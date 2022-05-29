@@ -3,7 +3,9 @@ package com.ajr.atmajayarental.screen;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -21,9 +23,6 @@ import java.time.format.DateTimeFormatter;
 public class DetailRiwayatActivity extends AppCompatActivity {
 
     private RiwayatTrans riwayatTrans;
-    TextView textIdTransaksi, textTanggalTransaksi, textTanggalMulai, textTanggalSelesai, textStatusTrans, textDurasi, textTanggalKembali;
-    TextView textCs, textJenisPromo, textBesarPromo, textMetodeBayar, textTotalMobil, textTotalDriver, textTotalHarga, textTotalDenda, textPotonganPromo;
-    TextView textNamaMobil, textNamaDriver;
     private ImageButton btnBack;
 
     private ActivityDetailRiwayatBinding binding;

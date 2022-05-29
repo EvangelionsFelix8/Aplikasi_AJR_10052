@@ -6,6 +6,7 @@ import static com.android.volley.Request.Method.PUT;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -132,7 +133,10 @@ public class DriverProfileFragment extends Fragment {
                 LayoutInflater layoutInflater = LayoutInflater.from(getContext());
                 View viewStatus = layoutInflater.inflate(R.layout.layout_status_ketersediaan, null);
 
+
                 final AlertDialog alertDialog = new AlertDialog.Builder(viewStatus.getContext()).create();
+                alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                alertDialog.getWindow().setLayout(200, 100);
                 btnTersedia = viewStatus.findViewById(R.id.btnTersedia);
                 btnTidakTersedia = viewStatus.findViewById(R.id.btnTidakTer);
                 btnTersedia.setOnClickListener(new View.OnClickListener() {

@@ -1,11 +1,13 @@
 package com.ajr.atmajayarental;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -57,9 +59,20 @@ public class DriverMainActivity extends AppCompatActivity {
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                driverPreferences.logout();
-                Toast.makeText(DriverMainActivity.this, "Berhasil Logout", Toast.LENGTH_SHORT).show();
-                checkLogin();
+                final AlertDialog alertDialog = new AlertDialog.Builder(getApplicationContext()).create();
+                new AlertDialog.Builder(DriverMainActivity.this)
+                        .setTitle("WARNING")
+                        .setMessage("Apakah Anda Yakin ingin Logout?")
+
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                driverPreferences.logout();
+                                Toast.makeText(DriverMainActivity.this, "Berhasil Logout", Toast.LENGTH_SHORT).show();
+                                checkLogin();
+                                alertDialog.dismiss();
+                            }})
+                        .setNegativeButton(android.R.string.no, null).show();
             }
         });
 

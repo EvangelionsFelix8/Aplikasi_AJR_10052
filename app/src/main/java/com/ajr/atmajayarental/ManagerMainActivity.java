@@ -1,10 +1,12 @@
 package com.ajr.atmajayarental;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.FileProvider;
 
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -113,9 +115,20 @@ public class ManagerMainActivity extends AppCompatActivity{
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                pegawaiPreferences.logout();
-                Toast.makeText(ManagerMainActivity.this, "Berhasil Logout", Toast.LENGTH_SHORT).show();
-                checkLogin();
+                final AlertDialog alertDialog = new AlertDialog.Builder(getApplicationContext()).create();
+                new AlertDialog.Builder(ManagerMainActivity.this)
+                        .setTitle("WARNING")
+                        .setMessage("Apakah Anda Yakin ingin Logout?")
+
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                pegawaiPreferences.logout();
+                                Toast.makeText(ManagerMainActivity.this, "Berhasil Logout", Toast.LENGTH_SHORT).show();
+                                checkLogin();
+                                alertDialog.dismiss();
+                            }})
+                        .setNegativeButton(android.R.string.no, null).show();
             }
         });
 
