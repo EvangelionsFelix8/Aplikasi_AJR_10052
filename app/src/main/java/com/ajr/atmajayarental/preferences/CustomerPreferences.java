@@ -53,6 +53,13 @@ public class CustomerPreferences {
         editor.commit();
     }
 
+    public void setPasswordLogin(String password){
+        editor.putBoolean(IS_LOGIN, true);
+        editor.putString(KEY_PASSWORD, password);
+
+        editor.commit();
+    }
+
     public Customer getCustomerLogin(){
         String access_token, alamat_customer, password, nama_customer, jenis_kelamin, imgUrl, email_customer;
         String id_customer, no_telp_customer, status_berkas, no_tanda_pengenal, no_sim;

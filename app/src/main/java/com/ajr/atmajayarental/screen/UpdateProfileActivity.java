@@ -179,7 +179,6 @@ public class UpdateProfileActivity extends AppCompatActivity implements AdapterV
                 inggris
         );
 
-        Log.i("url", DriverApi.UPDATE_DATA_DRIVER + driver.getId_driver());
         StringRequest stringRequest = new StringRequest(PUT,
                 DriverApi.UPDATE_DATA_DRIVER + driver.getId_driver(), new Response.Listener<String>() {
             @Override
@@ -204,7 +203,19 @@ public class UpdateProfileActivity extends AppCompatActivity implements AdapterV
                 try {
                     String responseBody = new String(error.networkResponse.data, StandardCharsets.UTF_8);
                     JSONObject errors = new JSONObject(responseBody);
-                    Toast.makeText(getApplicationContext(), errors.getString("message"), Toast.LENGTH_SHORT).show();
+                    if(nama.isEmpty()){
+                        Toast.makeText(getApplicationContext(), "Nama Tidak Boleh Kosong", Toast.LENGTH_SHORT).show();
+                    }
+                    if(email.isEmpty()){
+                        Toast.makeText(getApplicationContext(),"Email Tidak Boleh Kosong", Toast.LENGTH_SHORT).show();
+                    }
+                    if(noTelp.isEmpty()){
+                        Toast.makeText(getApplicationContext(),"Nomor Telepon Tidak Boleh Kosong", Toast.LENGTH_SHORT).show();
+                    }
+                    if(alamat.isEmpty()){
+                        Toast.makeText(getApplicationContext(),"Alamat Tidak Boleh Kosong", Toast.LENGTH_SHORT).show();
+                    }
+//                    Toast.makeText(getApplicationContext(), errors.getString("message"), Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                     Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }

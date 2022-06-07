@@ -14,6 +14,10 @@ public class Customer {
         this.password = password;
     }
 
+    public Customer(String password){
+        this.password = password;
+    }
+
     public Customer(String access_token, String id_customer, String nama_customer, String alamat_customer, String tanggal_lahir_customer,
                     String jenis_kelamin, String email_customer, String password,
                     String no_telp_customer, String status_berkas, String no_tanda_pengenal, String no_sim) {
