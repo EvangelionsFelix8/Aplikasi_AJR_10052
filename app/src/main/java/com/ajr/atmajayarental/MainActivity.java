@@ -25,6 +25,7 @@ import com.ajr.atmajayarental.models.Customer;
 import com.ajr.atmajayarental.preferences.CustomerPreferences;
 import com.ajr.atmajayarental.preferences.DriverPreferences;
 import com.ajr.atmajayarental.preferences.PegawaiPreferences;
+import com.ajr.atmajayarental.screen.ContactUsFragment;
 import com.ajr.atmajayarental.screen.HomeFragment;
 import com.ajr.atmajayarental.screen.LoginActivity;
 import com.ajr.atmajayarental.screen.MobilFragment;
@@ -106,6 +107,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 changeFragment(new RiwayatFragment());
                 changeToolbarTitle();
                 toolbarTitle.setText("Riwayat Transaksi Anda");
+                break;
+            case R.id.nav_contact:
+                changeFragment(new ContactUsFragment());
+                changeToolbarTitle();
+                toolbarTitle.setText("Contact Us");
                 break;
             case R.id.nav_logout:
                 final AlertDialog alertDialog = new AlertDialog.Builder(getApplicationContext()).create();

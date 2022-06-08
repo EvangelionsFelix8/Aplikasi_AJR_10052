@@ -41,6 +41,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="10dp"
             android:text="@string/berita_hari_ini"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
@@ -63,9 +64,123 @@
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="10dp"
-            android:text="@string/ini_belum_tahu_isinya_apa"
+            android:text="Kabar Gembira Untuk Anda"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="20sp" />
-    </LinearLayout>
 
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            tools:ignore="UselessParent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="300dp"
+                    android:layout_height="150dp"
+                    app:cardCornerRadius="10dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:scaleX="1.2"
+                            android:scaleY="1.2"
+                            android:src="@drawable/mitra" />
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_alignParentBottom="true"
+                            android:backgroundTint="@color/transparant_card_2">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:text="Bergabunglah bersama kami Di AJR"
+                                android:textColor="@color/white" />
+                        </androidx.cardview.widget.CardView>
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="300dp"
+                    android:layout_height="150dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    app:cardCornerRadius="10dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/promo" />
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_alignParentBottom="true"
+                            android:backgroundTint="@color/transparant_card_2">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:text="Banyak Promo Yang Tersedia"
+                                android:textColor="@color/white" />
+                        </androidx.cardview.widget.CardView>
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="300dp"
+                    android:layout_height="150dp"
+                    android:layout_marginEnd="35dp"
+                    android:backgroundTint="@color/biruTheme"
+                    app:cardCornerRadius="10dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:scaleX="1.2"
+                            android:scaleY="1.2"
+                            android:src="@drawable/slide3" />
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_alignParentBottom="true"
+                            android:backgroundTint="@color/transparant_card_2">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:text="Dipercaya Oleh Banyak Customer"
+                                android:textColor="@color/white" />
+                        </androidx.cardview.widget.CardView>
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </HorizontalScrollView>
+    </LinearLayout>
 </RelativeLayout>

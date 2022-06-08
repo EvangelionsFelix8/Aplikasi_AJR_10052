@@ -93,6 +93,17 @@
     <string name="masukkan_password_baru_anda">Masukan Password Baru Anda</string>
     <string name="masukan_password_baru_anda">Masukan password baru</string>
     <string name="konfirmasi_password">Konfirmasi Password Baru</string>
+    <string name="deskripsi">Atma Jaya Rental merupakan sebuah perusahaan rental yang bergerak pada bidang rental mobil, kami telah berdiri sejak tahun 2022 sampai saat ini kami telah berusaha agar kami menjadi perusahaan rental yang terpercaya oleh para customer kami dengan menjunjung tinggi nilai kejujuran, sopan santun, dan ramah tamah pada customer kami dan kami yakin kita akan senantiasa selalu ada untuk memenuhi kebutuhan rental mobil</string>
+    <string name="textVisi">Menjadi sebuah perusahaan yang mampu melayani masyarakat dalam bidang penyewaan mobil agar berguna bagi masyarakat</string>
+    <string name="atma_jaya_rental">ATMA JAYA RENTAL</string>
+    <string name="visi">VISI</string>
+    <string name="misi">MISI</string>
+    <string name="misi_1">1. Jujur Dalam Segala Hal</string>
+    <string name="misi_2">2. Senyum, ramah, bertanggung Jawab</string>
+    <string name="misi_3">3. Prioritas Pelanggan/Customer adalah hal yang utama</string>
+    <string name="our_contact">OUR CONTACT</string>
+    <string name="_08152199678">08152199678</string>
+    <string name="jln_babarsari_no_25_yogyakarta">Jln. Babarsari No 25, Yogyakarta</string>
 
     <!--    <string-array name="inggris_array">-->
     <!--        <item>Bisa</item>-->
