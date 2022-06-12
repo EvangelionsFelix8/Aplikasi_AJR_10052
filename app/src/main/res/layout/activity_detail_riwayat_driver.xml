@@ -208,9 +208,7 @@
                         <ImageView
                             android:id="@+id/fotoMobil"
                             android:layout_width="match_parent"
-                            android:layout_height="150dp"
-                            android:scaleX="2.0"
-                            android:scaleY="2.0" />
+                            android:layout_height="150dp" />
                     </androidx.cardview.widget.CardView>
                 </RelativeLayout>
 
