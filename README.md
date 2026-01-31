@@ -6,6 +6,8 @@
 📚 **Tugas Mata Kuliah Pengembangan Perangkat Lunak**  
 🎯 **Pendekatan Berorientasi Objek (OOP)**  
 
+![image_alt][screenshot.png]
+
 </div>
 
 ---
@@ -103,18 +105,3 @@ Proyek ini bertujuan untuk membangun **Sistem Informasi Atma Jogja Rental** yang
 |--------|---------|
 | 🌐 **Web Application** | Admin, CS, Manager |
 | 📲 **Mobile Application** | Customer, Manager, Driver |
-
----
-
-## 🖼️ Screenshot Antarmuka (UI)
-
-### 🌐 Web Application
-
-![Login](screenshots/web-login.png)
-![Dashboard](screenshots/web-dashboard.png)
-![Manajemen Mobil](screenshots/web-mobil.png)
-
-### 🌐 Web Application
-![Home](screenshots/mobile-home.png)
-![Riwayat Transaksi](screenshots/mobile-riwayat.png)
-![Laporan](screenshots/mobile-laporan.png)
