@@ -6,7 +6,7 @@
 📚 **Tugas Mata Kuliah Pengembangan Perangkat Lunak**  
 🎯 **Pendekatan Berorientasi Objek (OOP)**  
 
-![image_alt][screenshot.png]
+![image alt](screenshot.png)
 
 </div>
 
